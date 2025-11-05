@@ -1,0 +1,106 @@
+.navbar {
+    background-color: #1B2B20;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem 2rem;
+    border-bottom: 3px solid #9D7C37;
+    position: relative;
+    z-index: 100;
+}
+
+/* LOGO */
+.navbar-logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.navbar-logo img {
+    height: 70px;
+    width: auto;
+}
+
+/* ENLACES */
+.navbar-links {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.navbar-links a {
+    color: #f5f5f5;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease;
+}
+
+.navbar-links a:hover {
+    color: #9D7C37;
+}
+
+/* BOTÓN HAMBURGUESA */
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 6px;
+}
+
+.menu-toggle .bar {
+    width: 28px;
+    height: 3px;
+    background-color: #f5f5f5;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+/* ANIMACIÓN DE X CUANDO ESTÁ ABIERTO */
+.menu-toggle .bar.open:nth-child(1) {
+    transform: rotate(45deg) translateY(8px);
+}
+
+.menu-toggle .bar.open:nth-child(2) {
+    opacity: 0;
+}
+
+.menu-toggle .bar.open:nth-child(3) {
+    transform: rotate(-45deg) translateY(-8px);
+}
+
+/* 🔹 RESPONSIVE: MENU MÓVIL */
+@media (max-width: 768px) {
+    .menu-toggle {
+        display: flex;
+    }
+
+    .navbar-links {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        background-color: #1B2B20;
+        border-top: 2px solid #9D7C37;
+        padding: 1.5rem 0;
+        display: none;
+        gap: 1rem;
+    }
+
+    .navbar-links.active {
+        display: flex;
+        animation: slideDown 0.3s ease;
+    }
+
+    @keyframes slideDown {
+        from {
+            opacity: 0;
+            transform: translateY(-10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+}

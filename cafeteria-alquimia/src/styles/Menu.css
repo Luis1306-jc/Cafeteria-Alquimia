@@ -1,0 +1,98 @@
+.menu-container {
+    background-color: #1B2B20;
+    min-height: 100vh;
+    padding: 3rem;
+    text-align: center;
+}
+
+.menu-container h1 {
+    color: #9D7C37;
+    margin-bottom: 2rem;
+    font-weight: bold;
+}
+
+/* ✅ GRID de 3 columnas con espacio amplio */
+.menu-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    justify-items: center;
+}
+
+/* ✅ Card uniforme */
+.menu-card {
+    background-color: #243b2a !important;
+    color: #f5f5f5 !important;
+    border: 2px solid #9D7C37 !important;
+    border-radius: 14px !important;
+    width: 100%;
+    max-width: 340px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    box-sizing: border-box;
+    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+}
+
+.menu-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 4px 12px rgba(157, 124, 55, 0.5);
+}
+
+/* ✅ Imagen ajustada: se muestra completa */
+.menu-card-img {
+    height: 250px !important;
+    width: 100%;
+    object-fit: contain;
+    /* 🔹 No recorta la imagen */
+    padding: 10px;
+    background-color: #1B2B20;
+    /* Hace contraste */
+    border-bottom: 2px solid #9D7C37;
+    border-radius: 10px 10px 0 0;
+}
+
+/* ✅ Contenido centrado */
+.menu-card-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+}
+
+/* ✅ Texto */
+.menu-nombre {
+    color: #9D7C37 !important;
+    font-weight: 600 !important;
+    font-size: 1.2rem !important;
+    margin-bottom: 0.6rem !important;
+}
+
+.menu-descripcion {
+    font-size: 1rem !important;
+    color: #f0f0f0 !important;
+    margin-bottom: 1rem !important;
+}
+
+.menu-precio {
+    color: #9D7C37 !important;
+    font-weight: bold !important;
+    border-top: 1px solid #9D7C37;
+    padding-top: 0.5rem;
+}
+
+/* ✅ Responsive */
+@media (max-width: 1024px) {
+    .menu-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
+    .menu-grid {
+        grid-template-columns: 1fr;
+    }
+}
