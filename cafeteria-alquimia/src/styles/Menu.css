@@ -1,98 +1,113 @@
-.menu-container {
+.menu-fondo {
     background-color: #1B2B20;
     min-height: 100vh;
-    padding: 3rem;
-    text-align: center;
-}
-
-.menu-container h1 {
-    color: #9D7C37;
-    margin-bottom: 2rem;
-    font-weight: bold;
-}
-
-/* ✅ GRID de 3 columnas con espacio amplio */
-.menu-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 2.5rem;
-    justify-items: center;
-}
-
-/* ✅ Card uniforme */
-.menu-card {
-    background-color: #243b2a !important;
-    color: #f5f5f5 !important;
-    border: 2px solid #9D7C37 !important;
-    border-radius: 14px !important;
-    width: 100%;
-    max-width: 340px;
-    height: 500px;
+    padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    box-sizing: border-box;
-    transition: transform 0.3s ease, box-shadow 0.3s ease !important;
+    align-items: center;
 }
 
-.menu-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 4px 12px rgba(157, 124, 55, 0.5);
+.menu-titulo {
+    color: #9D7C37;
+    font-weight: bold;
+    margin-bottom: 3rem;
+    text-align: center;
+    font-size: 2rem;
 }
 
-/* ✅ Imagen ajustada: se muestra completa */
-.menu-card-img {
-    height: 250px !important;
+/* 🔹 Más separación entre tarjetas */
+.categorias-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3rem;
+    /* aumentado de 2rem a 3rem */
     width: 100%;
-    object-fit: contain;
-    /* 🔹 No recorta la imagen */
-    padding: 10px;
-    background-color: #1B2B20;
-    /* Hace contraste */
-    border-bottom: 2px solid #9D7C37;
-    border-radius: 10px 10px 0 0;
+    max-width: 1250px;
+    padding: 0 2rem;
+    /* un poco de espacio lateral */
 }
 
-/* ✅ Contenido centrado */
-.menu-card-content {
+/* 🔹 Cards amplias y con mejor proporción */
+.categoria-card {
+    position: relative;
+    width: 100%;
+    height: 430px;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 20px;
+    overflow: hidden;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.categoria-card:hover {
+    transform: scale(1.03);
+    box-shadow: 0 8px 22px rgba(157, 124, 55, 0.4);
+}
+
+/* 🔹 Capa oscura */
+.categoria-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    color: white;
     text-align: center;
+    transition: background 0.3s ease;
     padding: 1rem;
 }
 
-/* ✅ Texto */
-.menu-nombre {
-    color: #9D7C37 !important;
-    font-weight: 600 !important;
-    font-size: 1.2rem !important;
-    margin-bottom: 0.6rem !important;
+.categoria-card:hover .categoria-overlay {
+    background: rgba(0, 0, 0, 0.6);
 }
 
-.menu-descripcion {
-    font-size: 1rem !important;
-    color: #f0f0f0 !important;
-    margin-bottom: 1rem !important;
+/* 🔹 Título */
+.categoria-overlay h2 {
+    background-color: #2e523c;
+    padding: 0.7rem 1.5rem;
+    border-radius: 25px;
+    color: #fff;
+    margin-bottom: 1rem;
+    font-size: 1.6rem;
 }
 
-.menu-precio {
-    color: #9D7C37 !important;
-    font-weight: bold !important;
-    border-top: 1px solid #9D7C37;
-    padding-top: 0.5rem;
+/* 🔹 Descripción */
+.categoria-overlay p {
+    color: #f0f0f0;
+    font-size: 1.1rem;
 }
 
-/* ✅ Responsive */
+/* 🔹 Responsivo */
 @media (max-width: 1024px) {
-    .menu-grid {
+    .categorias-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: 2.5rem;
+    }
+
+    .categoria-card {
+        height: 400px;
     }
 }
 
-@media (max-width: 600px) {
-    .menu-grid {
+@media (max-width: 700px) {
+    .categorias-grid {
         grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .categoria-card {
+        height: 350px;
+    }
+
+    .categoria-overlay h2 {
+        font-size: 1.4rem;
+    }
+
+    .categoria-overlay p {
+        font-size: 1rem;
     }
 }

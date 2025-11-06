@@ -1,33 +1,48 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import "../styles/Menu.css";
-import { Card, CardContent, CardMedia, Typography } from "@mui/material";
 
 export default function Menu() {
-    const productos = [
-        { nombre: "Latte", descripcion: "Café con leche espumosa", precio: "$45", imagen: "/imagen1.jpeg" },
-        { nombre: "Cappuccino", descripcion: "Café con espuma cremosa", precio: "$50", imagen: "/imagen2.jpeg" },
-        { nombre: "Cold Brew", descripcion: "Café frío de extracción lenta", precio: "$55", imagen: "/imagen3.jpeg" },
-        { nombre: "Mocha", descripcion: "Café con chocolate y crema batida", precio: "$60", imagen: "/imagen4.jpeg" },
-        { nombre: "Americano", descripcion: "Café espresso con agua caliente", precio: "$40", imagen: "/imagen5.jpeg" },
-        { nombre: "Caramel Latte", descripcion: "Café con leche y jarabe de caramelo", precio: "$58", imagen: "/imagen7.jpeg" },
+    const navigate = useNavigate();
+
+    const categorias = [
+        {
+            titulo: "Bebidas",
+            descripcion: "Cafés, tés y bebidas frías",
+            imagen: "/imagen1.jpeg",
+            ruta: "bebidas", // 🔹 clave para redirigir
+        },
+        {
+            titulo: "Especialidades",
+            descripcion: "Sabores únicos de la casa",
+            imagen: "/imagen3.jpeg",
+            ruta: "especialidades",
+        },
+        {
+            titulo: "Comida y Postres",
+            descripcion: "Paninis, pasteles y más delicias",
+            imagen: "/imagen5.jpeg",
+            ruta: "comida-postres",
+        },
     ];
 
     return (
         <div className="menu-fondo">
-            <div className="menu-container">
-                <h1 className="menu-titulo">Menú</h1>
-                <div className="menu-grid">
-                    {productos.map((p, i) => (
-                        <Card key={i} className="menu-card">
-                            <CardMedia component="img" image={p.imagen} alt={p.nombre} className="menu-card-img" />
-                            <CardContent>
-                                <Typography className="menu-nombre" variant="h6">{p.nombre}</Typography>
-                                <Typography className="menu-descripcion" variant="body2">{p.descripcion}</Typography>
-                                <Typography className="menu-precio" variant="subtitle1">{p.precio}</Typography>
-                            </CardContent>
-                        </Card>
-                    ))}
-                </div>
+            <h1 className="menu-titulo">Menú</h1>
+            <div className="categorias-grid">
+                {categorias.map((cat, i) => (
+                    <div
+                        key={i}
+                        className="categoria-card"
+                        style={{ backgroundImage: `url(${cat.imagen})` }}
+                        onClick={() => navigate(`/categoria/${cat.ruta}`)} // 🔹 acción al hacer clic
+                    >
+                        <div className="categoria-overlay">
+                            <h2>{cat.titulo}</h2>
+                            <p>{cat.descripcion}</p>
+                        </div>
+                    </div>
+                ))}
             </div>
         </div>
     );
