@@ -1,52 +1,60 @@
+/* 🎨 Fondo general */
 .menu-fondo {
     background-color: #1B2B20;
+    /* Verde oscuro */
     min-height: 100vh;
     padding: 3rem 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: flex-start;
 }
 
+/* Título */
 .menu-titulo {
-    color: #9D7C37;
+    color: #D4AF37;
+    /* Dorado */
     font-weight: bold;
     margin-bottom: 3rem;
     text-align: center;
-    font-size: 2rem;
+    font-size: 2.3rem;
+    letter-spacing: 1px;
 }
 
-/* 🔹 Más separación entre tarjetas */
+/* 🔹 Grid de categorías */
 .categorias-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 3rem;
-    /* aumentado de 2rem a 3rem */
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    flex-wrap: nowrap;
+    /* 🔸 en una sola línea */
+    gap: 2.5rem;
     width: 100%;
-    max-width: 1250px;
-    padding: 0 2rem;
-    /* un poco de espacio lateral */
+    max-width: 1200px;
 }
 
-/* 🔹 Cards amplias y con mejor proporción */
+/* 🔹 Cada tarjeta */
 .categoria-card {
     position: relative;
-    width: 100%;
-    height: 430px;
+    flex: 1;
+    min-width: 320px;
+    height: 440px;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 20px;
+    border-radius: 22px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .categoria-card:hover {
-    transform: scale(1.03);
-    box-shadow: 0 8px 22px rgba(157, 124, 55, 0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.4);
 }
 
-/* 🔹 Capa oscura */
+/* 🔹 Capa oscura con texto */
 .categoria-overlay {
     position: absolute;
     inset: 0;
@@ -55,8 +63,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    color: white;
     text-align: center;
+    color: white;
     transition: background 0.3s ease;
     padding: 1rem;
 }
@@ -65,41 +73,39 @@
     background: rgba(0, 0, 0, 0.6);
 }
 
-/* 🔹 Título */
+/* 🔹 Título dentro de la tarjeta */
 .categoria-overlay h2 {
-    background-color: #2e523c;
+    background-color: rgba(30, 50, 35, 0.85);
     padding: 0.7rem 1.5rem;
     border-radius: 25px;
-    color: #fff;
-    margin-bottom: 1rem;
+    color: #D4AF37;
+    font-weight: bold;
     font-size: 1.6rem;
+    margin-bottom: 1rem;
 }
 
 /* 🔹 Descripción */
 .categoria-overlay p {
-    color: #f0f0f0;
+    color: #F1F1F1;
     font-size: 1.1rem;
 }
 
-/* 🔹 Responsivo */
+/* 🔹 Ajuste responsive */
 @media (max-width: 1024px) {
     .categorias-grid {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 2.5rem;
+        flex-wrap: wrap;
+        justify-content: center;
     }
 
     .categoria-card {
+        min-width: 300px;
         height: 400px;
     }
 }
 
 @media (max-width: 700px) {
-    .categorias-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
     .categoria-card {
+        min-width: 280px;
         height: 350px;
     }
 
@@ -110,4 +116,11 @@
     .categoria-overlay p {
         font-size: 1rem;
     }
+}
+
+/* 🔹 Fondo global (por si algo lo sobreescribe) */
+body {
+    background-color: #1B2B20 !important;
+    margin: 0;
+    padding: 0;
 }

@@ -12,7 +12,9 @@ function Navbar() {
   return (
     <nav className="navbar">
       <div className="navbar-logo">
-        <img src="/logo.jpeg" alt="Logo Cafetería Alquimia" />
+        <Link to="/">
+          <img src="/logo.jpeg" alt="Logo Cafetería Alquimia" />
+        </Link>
       </div>
 
       {/* Botón hamburguesa (solo visible en móvil) */}

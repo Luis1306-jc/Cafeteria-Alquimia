@@ -14,9 +14,11 @@ export default function Categoria() {
             { nombre: "Frappé de Vainilla", descripcion: "Refrescante mezcla de vainilla y hielo", precio: "$55", imagen: "/imagen3.jpeg" },
         ],
         especialidades: [
-            { nombre: "Matcha Latte", descripcion: "Energía verde y sabor suave", precio: "$60", imagen: "/imagen9.jpeg" },
-            { nombre: "Golden Milk", descripcion: "Cúrcuma, jengibre y leche de almendra", precio: "$65", imagen: "/imagen10.jpeg" },
-            { nombre: "Cold Brew", descripcion: "Café frío infusionado lentamente", precio: "$50", imagen: "/imagen13.jpeg" },
+            { nombre: "Té Matcha", descripcion: "Energía y frescura en cada sorbo, con ese toque suave y cremoso que conquista desde el primer momento.", precio: "$65", imagen: "/imagen9.jpeg" },
+            { nombre: "Chai", descripcion: "Una mezcla especializada y aromática que abraza el alma: dulce, cálida y simplemente irresistible.", precio: "$65", imagen: "/imagen10.jpeg" },
+            { nombre: "Tizana", descripcion: "Una explosión fresca y frutal, llena de colores y sabores naturales que te refrescan al instante.", precio: "$65", imagen: "/imagen13.jpeg" },
+            { nombre: "Verde Esmeralda", descripcion: "Refrescante y vibrante, con notas frutales y herbales que brillan como una joya en cada sorbo.", precio: "$65", imagen: "/imagen13.jpeg" },
+            { nombre: "Frutos Rojos", descripcion: "Dulce y refrescante, con el toque jugoso de frutos rojos que enamoran desde el primer trago.", precio: "$65", imagen: "/imagen13.jpeg" },
         ],
         "comida-postres": [
             { nombre: "Panini de Pavo", descripcion: "Con queso derretido y salsa especial", precio: "$75", imagen: "/comida1.jpeg" },
