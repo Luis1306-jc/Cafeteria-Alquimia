@@ -26,7 +26,8 @@ function Navbar() {
 
       {/* Enlaces del menú */}
       <div className={`navbar-links ${menuAbierto ? "active" : ""}`}>
-        <Link to="/" onClick={() => setMenuAbierto(false)}>Nosotros</Link>
+        <Link to="/" onClick={() => setMenuAbierto(false)}>Inicio</Link>
+        <Link to="/nosotros" onClick={() => setMenuAbierto(false)}>Nosotros</Link>
         <Link to="/menu" onClick={() => setMenuAbierto(false)}>Menú</Link>
         <Link to="/sucursales" onClick={() => setMenuAbierto(false)}>Sucursales</Link>
       </div>
