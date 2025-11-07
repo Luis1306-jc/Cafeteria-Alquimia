@@ -1,106 +1,236 @@
+/* -------------------------
+   Navbar (professional)
+   Colors: #1B2B20 (dark green) & #9D7C37 (gold)
+   ------------------------- */
+
+/* Prevent background scroll when overlay open */
+body.no-scroll {
+    overflow: hidden !important;
+    height: 100vh !important;
+}
+
+/* NAVBAR - not fixed, sits in normal flow */
 .navbar {
-    background-color: #1B2B20;
+    background: #1B2B20;
+    border-bottom: 3px solid #9D7C37;
+    padding: 0.8rem 1.5rem;
+    box-sizing: border-box;
+    width: 100%;
+    color: #f5f5f5;
+}
+
+/* inner container to control spacing */
+.navbar-inner {
+    max-width: 1200px;
+    margin: 0 auto;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 1rem 2rem;
-    border-bottom: 3px solid #9D7C37;
-    position: relative;
-    z-index: 100;
+    gap: 1rem;
 }
 
-/* LOGO */
-.navbar-logo {
+/* Logo */
+.logo-wrap {
     display: flex;
     align-items: center;
-    gap: 10px;
 }
 
-.navbar-logo img {
-    height: 70px;
+.logo-link {
+    display: inline-block;
+}
+
+.logo-img {
+    height: 56px;
     width: auto;
+    object-fit: contain;
+    transition: transform .22s ease, filter .22s ease;
 }
 
-/* ENLACES */
-.navbar-links {
+.logo-img:hover {
+    transform: scale(1.03);
+    filter: brightness(1.05);
+}
+
+/* Desktop links */
+.links-desktop {
     display: flex;
-    gap: 1.5rem;
+    gap: 2rem;
+    align-items: center;
 }
 
-.navbar-links a {
+.nav-link {
     color: #f5f5f5;
     text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease;
+    font-weight: 600;
+    letter-spacing: .2px;
+    position: relative;
+    transition: color .18s ease;
 }
 
-.navbar-links a:hover {
-    color: #9D7C37;
+.nav-link::after {
+    content: "";
+    position: absolute;
+    height: 2px;
+    left: 0;
+    bottom: -6px;
+    width: 0%;
+    background: #9D7C37;
+    transition: width .22s ease;
 }
 
-/* BOTÓN HAMBURGUESA */
-.menu-toggle {
+.nav-link:hover {
+    color: #d4af37;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* Hamburger (hidden on desktop) */
+.hamburger {
     display: none;
-    flex-direction: column;
+    background: transparent;
+    border: 0;
     cursor: pointer;
-    gap: 6px;
+    padding: 8px;
+    align-items: center;
 }
 
-.menu-toggle .bar {
+.h-bar {
+    display: block;
     width: 28px;
     height: 3px;
-    background-color: #f5f5f5;
+    background: #f5f5f5;
     border-radius: 3px;
-    transition: all 0.3s ease;
+    margin: 4px 0;
+    transition: transform .25s ease, opacity .18s ease;
 }
 
-/* ANIMACIÓN DE X CUANDO ESTÁ ABIERTO */
-.menu-toggle .bar.open:nth-child(1) {
-    transform: rotate(45deg) translateY(8px);
+.hamburger.is-open .h-bar:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
 }
 
-.menu-toggle .bar.open:nth-child(2) {
+.hamburger.is-open .h-bar:nth-child(2) {
     opacity: 0;
+    transform: scaleX(0);
 }
 
-.menu-toggle .bar.open:nth-child(3) {
-    transform: rotate(-45deg) translateY(-8px);
+.hamburger.is-open .h-bar:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
 }
 
-/* 🔹 RESPONSIVE: MENU MÓVIL */
+/* Overlay for mobile (centered menu, full-screen, no page scroll) */
+.overlay {
+    display: none;
+}
+
+.overlay.open {
+    display: flex;
+    position: fixed;
+    inset: 0;
+    z-index: 2000;
+    align-items: center;
+    justify-content: center;
+    background: rgba(11, 20, 16, 0.94);
+    /* almost-solid dark */
+    backdrop-filter: blur(4px);
+    padding: 2rem;
+    animation: overlayFade .22s ease;
+}
+
+@keyframes overlayFade {
+    from {
+        opacity: 0;
+        transform: translateY(-6px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* close button top-right inside overlay */
+.overlay-close {
+    position: absolute;
+    top: 18px;
+    right: 18px;
+    background: transparent;
+    border: 0;
+    color: #f5f5f5;
+    font-size: 1.6rem;
+    cursor: pointer;
+    padding: 6px;
+}
+
+/* overlay nav vertical links */
+.overlay-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    width: 100%;
+    max-width: 420px;
+    align-items: center;
+}
+
+.overlay-link {
+    display: block;
+    width: 100%;
+    text-align: center;
+    padding: 0.9rem 1rem;
+    background: transparent;
+    color: #f5f5f5;
+    text-decoration: none;
+    font-weight: 700;
+    border-radius: 12px;
+    transition: background .18s ease, color .18s ease, transform .12s ease;
+    border: 1px solid rgba(157, 124, 55, 0.06);
+}
+
+.overlay-link:hover {
+    background: rgba(157, 124, 55, 0.08);
+    color: #d4af37;
+    transform: translateY(-3px);
+}
+
+/* Responsive rules */
+@media (max-width: 900px) {
+    .links-desktop {
+        gap: 1.2rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .menu-toggle {
-        display: flex;
-    }
-
-    .navbar-links {
-        position: absolute;
-        top: 100%;
-        left: 0;
-        width: 100%;
-        flex-direction: column;
-        align-items: center;
-        background-color: #1B2B20;
-        border-top: 2px solid #9D7C37;
-        padding: 1.5rem 0;
+    .links-desktop {
         display: none;
-        gap: 1rem;
     }
 
-    .navbar-links.active {
+    /* hide desktop links */
+    .hamburger {
         display: flex;
-        animation: slideDown 0.3s ease;
     }
 
-    @keyframes slideDown {
-        from {
-            opacity: 0;
-            transform: translateY(-10px);
-        }
+    /* show hamburger */
+    .logo-img {
+        max-height: 48px;
+    }
 
-        to {
-            opacity: 1;
-            transform: translateY(0);
-        }
+    /* slightly smaller logo on mobile */
+    .navbar-inner {
+        gap: .6rem;
+    }
+}
+
+/* small screens extra adjustments */
+@media (max-width: 420px) {
+    .overlay-nav {
+        max-width: 360px;
+        gap: 0.9rem;
+    }
+
+    .overlay-link {
+        font-size: 1rem;
+        padding: 0.8rem 0.8rem;
+        border-radius: 10px;
     }
 }

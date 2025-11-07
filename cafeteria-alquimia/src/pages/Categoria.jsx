@@ -10,8 +10,8 @@ export default function Categoria() {
     const productosPorCategoria = {
         bebidas: [
             { nombre: "Café Latte", descripcion: "Café espresso con leche vaporizada", precio: "$45", imagen: "/imagen1.jpeg" },
-            { nombre: "Té Chai", descripcion: "Infusión de especias y leche cremosa", precio: "$40", imagen: "/imagen2.jpeg" },
-            { nombre: "Frappé de Vainilla", descripcion: "Refrescante mezcla de vainilla y hielo", precio: "$55", imagen: "/imagen3.jpeg" },
+            { nombre: "Té Chai", descripcion: "Infusión de especias y leche cremosa", precio: "$40", imagen: "/imagen7.jpeg" },
+            { nombre: "Frappé de Vainilla", descripcion: "Refrescante mezcla de vainilla y hielo", precio: "$55", imagen: "/imagen14.jpeg" },
         ],
         especialidades: [
             { nombre: "Té Matcha", descripcion: "Energía y frescura en cada sorbo, con ese toque suave y cremoso que conquista desde el primer momento.", precio: "$65", imagen: "/imagen9.jpeg" },
@@ -21,17 +21,14 @@ export default function Categoria() {
             { nombre: "Frutos Rojos", descripcion: "Dulce y refrescante, con el toque jugoso de frutos rojos que enamoran desde el primer trago.", precio: "$65", imagen: "/imagen13.jpeg" },
         ],
         "comida-postres": [
-            { nombre: "Panini de Pavo", descripcion: "Con queso derretido y salsa especial", precio: "$75", imagen: "/comida1.jpeg" },
-            { nombre: "Pastel de Chocolate", descripcion: "Suave y húmedo, irresistible", precio: "$70", imagen: "/comida2.jpeg" },
-            { nombre: "Cheesecake", descripcion: "Clásico pastel de queso con frambuesa", precio: "$65", imagen: "/comida3.jpeg" },
+            { nombre: "Panini de Pavo", descripcion: "Con queso derretido y salsa especial", precio: "$75", imagen: "/imagen5.jpeg" },
+            { nombre: "Pastel de Chocolate", descripcion: "Suave y húmedo, irresistible", precio: "$70", imagen: "/imagen11.jpeg" },
+            { nombre: "Cheesecake", descripcion: "Clásico pastel de queso con frambuesa", precio: "$65", imagen: "/imagen12.jpeg" },
         ],
     };
 
     const productos = productosPorCategoria[nombre] || [];
-
-    const tituloCategoria = nombre
-        .replace("-", " ")
-        .replace(/\b\w/g, (l) => l.toUpperCase());
+    const tituloCategoria = nombre.replace("-", " ").replace(/\b\w/g, (l) => l.toUpperCase());
 
     return (
         <div className="categoria-fondo">

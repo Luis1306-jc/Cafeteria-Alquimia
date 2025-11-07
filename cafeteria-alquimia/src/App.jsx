@@ -1,31 +1,45 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
 import Navbar from "./components/Navbar";
-import Footer from "./components/Footer";        // 🔹 Nueva pantalla principal
-import Home from "./pages/Home";            // 🔹 “Nosotros”
+import Footer from "./components/Footer";
+import Home from "./pages/Home";
 import Menu from "./pages/Menu";
 import Nosotros from "./pages/Nosotros";
 import Categoria from "./pages/Categoria";
 import Sucursales from "./pages/Sucursales";
 import "./App.css";
 
+function Layout({ children }) {
+  const location = useLocation();
+
+  // 🔹 Oculta Navbar y Footer solo en Home ("/")
+  const hideNavbarFooter = location.pathname === "/";
+
+  return (
+    <div className="App">
+      {!hideNavbarFooter && <Navbar />}
+
+      <main>{children}</main>
+
+      {!hideNavbarFooter && <Footer />}
+    </div>
+  );
+}
+
 function App() {
   return (
     <Router>
-      <div className="App">
-        <Navbar />
+      <Layout>
+        <Routes>
+          {/* 🏠 Pantalla principal */}
+          <Route path="/" element={<Home />} />
 
-        <main>
-          <Routes>
-            <Route path="/nosotros" element={<Nosotros />} /> {/* 🏠 Nueva pantalla inicial */}
-            <Route path="/" element={<Home />} /> {/* “Nosotros” */}
-            <Route path="/menu" element={<Menu />} />
-            <Route path="/categoria" element={<Categoria />} />
-            <Route path="/sucursales" element={<Sucursales />} />
-          </Routes>
-        </main>
-
-        <Footer />
-      </div>
+          {/* 🔹 Otras páginas */}
+          <Route path="/nosotros" element={<Nosotros />} />
+          <Route path="/menu" element={<Menu />} />
+          <Route path="/menu/:nombre" element={<Categoria />} />
+          <Route path="/sucursales" element={<Sucursales />} />
+        </Routes>
+      </Layout>
     </Router>
   );
 }

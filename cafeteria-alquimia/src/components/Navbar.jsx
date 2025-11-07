@@ -1,38 +1,62 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import "../styles/Navbar.css";
 
-function Navbar() {
-  const [menuAbierto, setMenuAbierto] = useState(false);
+export default function Navbar() {
+  const [open, setOpen] = useState(false);
+  const location = useLocation();
 
-  const toggleMenu = () => {
-    setMenuAbierto(!menuAbierto);
-  };
+  // Cerrar menú al cambiar de ruta
+  useEffect(() => {
+    setOpen(false);
+  }, [location]);
+
+  // Bloquear scroll del body mientras el overlay está abierto
+  useEffect(() => {
+    document.body.classList.toggle("no-scroll", open);
+    return () => document.body.classList.remove("no-scroll");
+  }, [open]);
 
   return (
-    <nav className="navbar">
-      <div className="navbar-logo">
-        <Link to="/">
-          <img src="/logo.jpeg" alt="Logo Cafetería Alquimia" />
-        </Link>
+    <header className="navbar" role="navigation" aria-label="Main navigation">
+      <div className="navbar-inner">
+        <div className="logo-wrap">
+          <Link to="/" className="logo-link" aria-label="Ir al inicio" onClick={() => setOpen(false)}>
+            <img src="/logo.jpeg" alt="Alquimia D'Loto" className="logo-img" />
+          </Link>
+        </div>
+
+        {/* desktop links */}
+        <nav className="links-desktop" aria-hidden={open}>
+          <Link to="/" className="nav-link">Inicio</Link>
+          <Link to="/nosotros" className="nav-link">Nosotros</Link>
+          <Link to="/menu" className="nav-link">Menú</Link>
+          <Link to="/sucursales" className="nav-link">Sucursales</Link>
+        </nav>
+
+        {/* hamburger */}
+        <button
+          className={`hamburger ${open ? "is-open" : ""}`}
+          onClick={() => setOpen(v => !v)}
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-expanded={open}
+        >
+          <span className="h-bar"></span>
+          <span className="h-bar"></span>
+          <span className="h-bar"></span>
+        </button>
       </div>
 
-      {/* Botón hamburguesa (solo visible en móvil) */}
-      <div className="menu-toggle" onClick={toggleMenu}>
-        <span className={`bar ${menuAbierto ? "open" : ""}`}></span>
-        <span className={`bar ${menuAbierto ? "open" : ""}`}></span>
-        <span className={`bar ${menuAbierto ? "open" : ""}`}></span>
+      {/* mobile overlay menu */}
+      <div className={`overlay ${open ? "open" : ""}`} role="dialog" aria-modal="true" aria-hidden={!open}>
+        <button className="overlay-close" onClick={() => setOpen(false)} aria-label="Cerrar menú">✕</button>
+        <nav className="overlay-nav">
+          <Link to="/" className="overlay-link" onClick={() => setOpen(false)}>Inicio</Link>
+          <Link to="/nosotros" className="overlay-link" onClick={() => setOpen(false)}>Nosotros</Link>
+          <Link to="/menu" className="overlay-link" onClick={() => setOpen(false)}>Menú</Link>
+          <Link to="/sucursales" className="overlay-link" onClick={() => setOpen(false)}>Sucursales</Link>
+        </nav>
       </div>
-
-      {/* Enlaces del menú */}
-      <div className={`navbar-links ${menuAbierto ? "active" : ""}`}>
-        <Link to="/" onClick={() => setMenuAbierto(false)}>Inicio</Link>
-        <Link to="/nosotros" onClick={() => setMenuAbierto(false)}>Nosotros</Link>
-        <Link to="/menu" onClick={() => setMenuAbierto(false)}>Menú</Link>
-        <Link to="/sucursales" onClick={() => setMenuAbierto(false)}>Sucursales</Link>
-      </div>
-    </nav>
+    </header>
   );
 }
-
-export default Navbar;

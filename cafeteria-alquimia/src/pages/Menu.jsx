@@ -10,7 +10,7 @@ export default function Menu() {
             titulo: "Bebidas",
             descripcion: "Cafés, tés y bebidas frías",
             imagen: "/imagen1.jpeg",
-            ruta: "bebidas", // 🔹 clave para redirigir
+            ruta: "bebidas",
         },
         {
             titulo: "Especialidades",
@@ -35,7 +35,7 @@ export default function Menu() {
                         key={i}
                         className="categoria-card"
                         style={{ backgroundImage: `url(${cat.imagen})` }}
-                        onClick={() => navigate(`/categoria/${cat.ruta}`)} // 🔹 acción al hacer clic
+                        onClick={() => navigate(`/menu/${cat.ruta}`)} // ✅ Corregido
                     >
                         <div className="categoria-overlay">
                             <h2>{cat.titulo}</h2>
