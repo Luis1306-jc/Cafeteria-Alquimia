@@ -1,0 +1,106 @@
+/* ===== Fondo general ===== */
+.home-container {
+    background-image: url("https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Poppins", sans-serif;
+    color: #fff;
+    padding: 2rem;
+    overflow-x: hidden;
+}
+
+/* ===== Capa de color semitransparente ===== */
+.home-overlay {
+    background-color: rgba(15, 29, 21, 0.88);
+    padding: 3rem;
+    border-radius: 20px;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5);
+}
+
+/* ===== Título principal ===== */
+.home-titulo {
+    font-size: 2.5rem;
+    color: #d4af37;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    margin-bottom: 2rem;
+}
+
+/* ===== Subtítulos ===== */
+.home-subtitulo {
+    font-size: 1.7rem;
+    color: #d4af37;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    position: relative;
+}
+
+.home-subtitulo::after {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 3px;
+    background-color: #d4af37;
+    margin: 0.5rem auto;
+    border-radius: 2px;
+}
+
+/* ===== Texto ===== */
+.home-texto {
+    color: #f1f1f1;
+    font-size: 1.05rem;
+    line-height: 1.8;
+    text-align: justify;
+    margin-bottom: 1.5rem;
+}
+
+/* ===== Secciones ===== */
+.home-section {
+    margin-bottom: 2rem;
+}
+
+/* ===== Responsivo ===== */
+@media (max-width: 900px) {
+    .home-overlay {
+        padding: 2rem;
+    }
+
+    .home-titulo {
+        font-size: 2rem;
+    }
+
+    .home-subtitulo {
+        font-size: 1.4rem;
+    }
+
+    .home-texto {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .home-overlay {
+        padding: 1.5rem;
+    }
+
+    .home-titulo {
+        font-size: 1.7rem;
+        letter-spacing: 2px;
+    }
+
+    .home-subtitulo {
+        font-size: 1.2rem;
+    }
+
+    .home-texto {
+        font-size: 0.95rem;
+    }
+}

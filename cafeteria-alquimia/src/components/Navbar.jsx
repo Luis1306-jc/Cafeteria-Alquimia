@@ -11,30 +11,29 @@ export default function Navbar() {
     setOpen(false);
   }, [location]);
 
-  // Bloquear scroll del body mientras el overlay está abierto
+  // Bloquear scroll del fondo cuando el menú está abierto
   useEffect(() => {
     document.body.classList.toggle("no-scroll", open);
     return () => document.body.classList.remove("no-scroll");
   }, [open]);
 
   return (
-    <header className="navbar" role="navigation" aria-label="Main navigation">
+    <header className="navbar" role="navigation" aria-label="Navegación principal">
       <div className="navbar-inner">
-        <div className="logo-wrap">
-          <Link to="/" className="logo-link" aria-label="Ir al inicio" onClick={() => setOpen(false)}>
-            <img src="/logo.jpeg" alt="Alquimia D'Loto" className="logo-img" />
-          </Link>
-        </div>
+        {/* Logo */}
+        <Link to="/" className="logo-link" onClick={() => setOpen(false)}>
+          <img src="/logo.jpeg" alt="Alquimia D'Loto" className="logo-img" />
+        </Link>
 
-        {/* desktop links */}
-        <nav className="links-desktop" aria-hidden={open}>
+        {/* Enlaces escritorio */}
+        <nav className="links-desktop">
           <Link to="/" className="nav-link">Inicio</Link>
           <Link to="/nosotros" className="nav-link">Nosotros</Link>
           <Link to="/menu" className="nav-link">Menú</Link>
           <Link to="/sucursales" className="nav-link">Sucursales</Link>
         </nav>
 
-        {/* hamburger */}
+        {/* Botón hamburguesa */}
         <button
           className={`hamburger ${open ? "is-open" : ""}`}
           onClick={() => setOpen(v => !v)}
@@ -47,9 +46,9 @@ export default function Navbar() {
         </button>
       </div>
 
-      {/* mobile overlay menu */}
-      <div className={`overlay ${open ? "open" : ""}`} role="dialog" aria-modal="true" aria-hidden={!open}>
-        <button className="overlay-close" onClick={() => setOpen(false)} aria-label="Cerrar menú">✕</button>
+      {/* Overlay menú móvil */}
+      <div className={`overlay ${open ? "open" : ""}`}>
+        <button className="overlay-close" onClick={() => setOpen(false)}>✕</button>
         <nav className="overlay-nav">
           <Link to="/" className="overlay-link" onClick={() => setOpen(false)}>Inicio</Link>
           <Link to="/nosotros" className="overlay-link" onClick={() => setOpen(false)}>Nosotros</Link>
